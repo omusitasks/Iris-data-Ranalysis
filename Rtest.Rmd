@@ -1,0 +1,47 @@
+---
+title: "Rtest"
+author: "Scatter Point Chart"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Scatter point chart indicating all features found in Iris dataset
+
+```{r}
+##Data Reading
+iris.df <- read.csv("Iris.csv")
+
+# we have to change our target variable to factor type for it to work
+iris.df$Species <- as.factor(iris.df$Species)
+  
+# scatter point chart with all features included
+pairs(iris.df[, 2:5], col = iris.df$Species, oma=c(3,3,3,15))
+par(xpd = TRUE)
+legend("bottomright", fill = unique(iris.df$Species), legend = c( levels(iris.df$Species)))
+
+```
+# Conclusion made from the main chart:
+
+## 1. We can conclude that, Petal Length and Petal Width are more important features than Sepal Length and Sepal Width This is because whenever we have P.L and P.W, the accuracy of separating Iris-Setora from others automatically becomes 100%.
+
+## 2. We can also conclude that, in absolutely all diagrams;Iris Setosa is linearly separable from the other two species(Iris versicolor and Iris virginica)
+
+## 3. That,Iris versicolor and Iris virginica are have overlap
+
+
+
+
+
+
+
+
+
+
+
+

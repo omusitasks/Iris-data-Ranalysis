@@ -1,0 +1,76 @@
+---
+title: "Rtest-2"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(ggplot2)
+##Data Reading
+df.data <- read.csv("IrisDataset.csv")
+
+# since our target variable "Species" is categorical variable
+# first lets convert it to the right data type
+
+df.data$Species <- as.factor(df.data$Species)
+  
+ggplot(data=df.data,mapping=aes(x = PetalLengthCm, y = PetalWidthCm,color=Species))+
+  xlab(" Petal Length (cm)") +
+  ylab(" Petal Width (cm)")  +
+  ggtitle("Petal Length vs Petal Width grouped by Species")+
+  geom_point()
+```
+
+
+# Explanation
+
+## The Scatter point chart above displays 2 variables  found in Iris dataset. The variables are Petal Length and Petal Width. These variables have been used to classify type of species of a flower. Since Species is the target variable, it contains 3 different classes representing 3 different species of flower which are: Iris-setosa, Iris-versicolor and Iris-virginica types.
+
+
+# Conclusion 
+
+## Using the graph generated above it is evident that Petal Length and Petal Width  variables clearly separates Iris-Setora from the other two species.
+
+## Thus, we can say that Iris-setosa is linearly separable from the other two species(Iris versicolor and Iris virginica) and that there is an overlap between Iris versicolor and Iris virginica.
+
+
+
+```{r}
+library(ggplot2)
+  
+ggplot(data=df.data,mapping=aes(x = SepalLengthCm, y = SepalWidthCm,color=Species))+
+  xlab(" Sepal Length (cm)") +
+  ylab(" Sepal Width (cm)")  +
+  ggtitle("Sepal Length vs Sepal Width grouped by Species")+
+  geom_point()
+```
+
+
+# Explanation
+
+## The Scatter point chart above displays the other 2 variables in Iris dataset. The variables are Sepal Length and Sepal Width. These variables have been used to classify type of species of a flower. Since Species is the target variable, it contains 3 different classes representing 3 different species of flower which are: Iris-setosa, Iris-versicolor and Iris-virginica types.
+
+
+# Conclusion 
+
+## Using the graph generated above it is evident that we cannot clearly separate Iris-Setora from the other two species since at least one type of setosa will still overlap with virginica and versicolor type
+
+## Thus, we can say that Iris-setosa is not linearly separable from the other two species(Iris versicolor and Iris virginica) and that there is an overlap among the three types of species.
+
+
+
+
+
+
+
+

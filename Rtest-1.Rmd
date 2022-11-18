@@ -1,0 +1,52 @@
+---
+title: "Rtest-1"
+author: "Scatter Point Chart"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(ggplot2)
+##Data Reading
+iris.df <- read.csv("Iris.csv")
+
+# we have to change our target variable to factor type for it to work
+iris.df$Species <- as.factor(iris.df$Species)
+  
+plt <- ggplot(data = iris.df, mapping = aes(x = PetalLengthCm, y = PetalWidthCm)) 
+
+plt <- plt + geom_point(alpha = 0.7, size = 6, aes(fill = factor(Species)), colour = 'purple', pch = 21)
+
+plt <- plt + labs(title = "Petal Length Vs Width" ,x = "Petal LengthCm", y = "Petal Width Cm")
+plt <- plt + theme_minimal()
+
+plt
+
+```
+# Explanation
+
+## Above is the Scatter point chart showing 2 out of 4 variables found in Iris dataset. In this case, Petal Length and Petal Width are the variables used. These variables are used as a way of classifying our target variable knows as "Species". The chart will be showing: Iris-setosa, Iris-versicolor and Iris-virginica types.
+
+
+# Conclusion 
+
+## From the graph We can conclude that, using Petal Length and Petal Width  variables we can accurately separate Iris-Setora from the other two species clearly.
+
+## With this regard, Iris-setosa is linearly separable from the other two species(Iris versicolor and Iris virginica) and that there is an overlap between Iris versicolor and Iris virginica.
+
+
+
+
+
+
+
+
+
+
